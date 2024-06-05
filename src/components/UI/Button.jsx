@@ -6,8 +6,6 @@ function Button({ color, size, children, onClick }) {
   const sizeClasses = `btn-${size}`;
   const classNames = `btn ${colorClasses} ${sizeClasses}`;
 
-  console.log(children);
-
   return (
     <button className={classNames} onClick={onClick}>
       {children}
