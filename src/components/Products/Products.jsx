@@ -1,15 +1,9 @@
 import ProductItem from "./ProductItem";
 import { productsData } from "../../productsData";
-import { useState } from "react";
+ 
 import "./Products.css";
 
 function Products() {
-  const [titleState, setTitleState] = useState("Title");
-
-  function handleTitleChange(params){
-    setTitleState(params)
-  }
-
   return (
     <div className="products-wrapper">
       <h2>Products</h2>
@@ -18,10 +12,9 @@ function Products() {
           <ProductItem
             key={product.id}
             image={product.image}
-            title={titleState}
+            title={product.title}
             price={product.price}
             description={product.description}
-            handleTitleChange={handleTitleChange}
           />
         ))}
       </div>

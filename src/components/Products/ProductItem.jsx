@@ -1,6 +1,7 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
-import "./ProductItem.css";
 import Button from "../UI/Button";
+import "./ProductItem.css";
 
 /* 
 1- state değişirse component güncellenir.
@@ -8,7 +9,12 @@ import Button from "../UI/Button";
 */
 
 function ProductItem(props) {
-  const { image, title, price, description, handleTitleChange } = props;
+  const [titleState, setTitleState] = useState("Title");
+  const { image, title, price, description } = props;
+
+  function handleTitleChange() {
+    setTitleState(title);
+  }
 
   return (
     <div className="product-item">
@@ -16,13 +22,13 @@ function ProductItem(props) {
         <img src={image} alt={title} />
       </div>
       <div className="product-info">
-        <strong>{title}</strong>
+        <strong>{titleState}</strong>
         <span>{price}₺</span>
         <span className="product-desc">{description}</span>
         <Button
           color="primary"
           size="sm"
-          onClick={()=> handleTitleChange("my data")}
+          onClick={() => handleTitleChange("my data")}
         >
           Title Change!
         </Button>
@@ -36,7 +42,6 @@ ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string,
-  handleTitleChange: PropTypes.func,
 };
 
 export default ProductItem;
