@@ -1,14 +1,21 @@
-// import Products from "./components/Products/Products";
-
-import Button from "./components/UI/Button";
+import { useState } from "react";
 
 function App() {
+  const [state, setState] = useState("Ahmet Demir");
+  let fullName = "Ahmet Demir";
+
+  function handleClick() {
+    fullName = "Emin Başbayan";
+    console.log(fullName);
+    setState(fullName);
+  }
+
+  console.log("render!");
+
   return (
     <div className="app">
-      <Button size="xl" color="primary">Add To Cart</Button>
-      <Button size="lg" color="success">Update</Button>
-      <Button size="sm" color="danger">Delete</Button>
-      {/* <Products /> */}
+      <p>{state}</p>
+      <button onClick={handleClick}>İsmi Değiştir!</button>
     </div>
   );
 }
