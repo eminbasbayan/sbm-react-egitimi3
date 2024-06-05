@@ -1,17 +1,19 @@
 import "./ProductItem.css";
 
 function ProductItem() {
+  const image =
+    "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg";
+  const title = "Tişört";
+  const price = 200;
+
   return (
     <div className="product-item">
       <div className="product-image">
-        <img
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          alt="product title"
-        />
+        <img src={image} alt="product title" />
       </div>
       <div className="product-info">
-        <strong>Title</strong>
-        <span>200₺</span>
+        <strong>{title.slice(0, 2)}</strong>
+        <span>{price.toFixed(2)}₺</span>
       </div>
     </div>
   );
