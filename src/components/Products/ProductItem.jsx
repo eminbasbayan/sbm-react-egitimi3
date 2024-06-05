@@ -19,7 +19,11 @@ function ProductItem(props) {
         <strong>{title}</strong>
         <span>{price}₺</span>
         <span className="product-desc">{description}</span>
-        <Button color="primary" size="sm" onClick={handleTitleChange}>
+        <Button
+          color="primary"
+          size="sm"
+          onClick={()=> handleTitleChange("my data")}
+        >
           Title Change!
         </Button>
       </div>

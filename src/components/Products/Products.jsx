@@ -6,8 +6,8 @@ import "./Products.css";
 function Products() {
   const [titleState, setTitleState] = useState("Title");
 
-  function handleTitleChange(){
-    setTitleState("New Title")
+  function handleTitleChange(params){
+    setTitleState(params)
   }
 
   return (
