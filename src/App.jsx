@@ -1,5 +1,7 @@
+import ProductItem from "./ProductItem"
+
 function App(){
-    return <h1>Hello App!</h1>
+    return <ProductItem />
 }
 
 export default App
