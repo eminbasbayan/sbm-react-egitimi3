@@ -28,7 +28,7 @@
   -webkit-box-orient: vertical;
 }
 
-.product-info span:last-child {
+.product-desc {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3; /* number of lines to show */
