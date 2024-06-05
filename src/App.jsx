@@ -5,10 +5,9 @@ import Button from "./components/UI/Button";
 function App() {
   return (
     <div className="app">
-      <Button title="Add To Cart" size="xl" color="primary" />
-      <Button title="Update" size="lg" color="success" />
-      <Button title="Delete" size="sm" color="danger" />
-      <Button title="Deneme" size="lg" color="warning" />
+      <Button size="xl" color="primary">Add To Cart</Button>
+      <Button size="lg" color="success">Update</Button>
+      <Button size="sm" color="danger">Delete</Button>
       {/* <Products /> */}
     </div>
   );

@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import "./Button.css";
 
-function Button({ color, size, title }) {
+function Button({ color, size, children }) {
   const colorClasses = `btn-${color}`;
   const sizeClasses = `btn-${size}`;
   const classNames = `btn ${colorClasses} ${sizeClasses}`;
 
-  return <button className={classNames}>{title}</button>;
+  console.log(children);
+
+  return <button className={classNames}>{children}</button>;
 }
 
 Button.propTypes = {
-  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   size: PropTypes.oneOf(["xl", "lg", "sm"]).isRequired,
   color: PropTypes.oneOf(["primary", "success", "danger"]).isRequired,
 };
