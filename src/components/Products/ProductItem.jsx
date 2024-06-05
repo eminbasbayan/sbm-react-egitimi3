@@ -12,8 +12,8 @@ function ProductItem() {
         <img src={image} alt="product title" />
       </div>
       <div className="product-info">
-        <strong>{title.slice(0, 2)}</strong>
-        <span>{price.toFixed(2)}₺</span>
+        <strong>{title}</strong>
+        <span>{price}₺</span>
       </div>
     </div>
   );
