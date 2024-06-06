@@ -1,13 +1,23 @@
 import { useState } from "react";
 import ProductItem from "./ProductItem";
 import AddNewProduct from "./AddNewProduct";
-import { productsData } from "../../productsData";
 import Modal from "../UI/Modal";
 import "./Products.css";
+import Button from "../UI/Button";
 
 function Products() {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  async function fetchProducts() {
+    try {
+      const res = await fetch("https://fakestoreapi.com/products");
+      const data = await res.json();
+      setProducts(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="products-wrapper">
@@ -23,6 +33,9 @@ function Products() {
         />
       )}
       <h2>Products</h2>
+      <Button onClick={fetchProducts} size="sm" color="primary">
+        Fetch Data
+      </Button>
       <div className="products">
         {products.map((product) => (
           <ProductItem
