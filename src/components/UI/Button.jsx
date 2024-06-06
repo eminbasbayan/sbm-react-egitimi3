@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import "./Button.css";
 
+import "./Button.css";
 function Button({ color, size, children, onClick }) {
   const colorClasses = `btn-${color}`;
   const sizeClasses = `btn-${size}`;

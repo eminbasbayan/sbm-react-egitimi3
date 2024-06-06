@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import "./ProductItem.css";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 /* 
 1- state değişirse component güncellenir.
@@ -8,27 +10,8 @@ import "./ProductItem.css";
 */
 
 function ProductItem(props) {
-  const {
-    id,
-    image,
-    title,
-    price,
-    description,
-    handleDeleteItem,
-    setCartItems,
-  } = props;
-
-  function addToCart() {
-    const product = {
-      id,
-      image,
-      title,
-      price,
-      description,
-    };
-
-    setCartItems((cartItems) => [product, ...cartItems]);
-  }
+  const { id, image, title, price, description, handleDeleteItem } = props;
+  const { addToCart } = useContext(CartContext);
 
   return (
     <div className="product-item">
@@ -39,7 +22,20 @@ function ProductItem(props) {
         <strong>{title}</strong>
         <span>{price}₺</span>
         <span className="product-desc">{description}</span>
-        <Button color="primary" size="sm" onClick={addToCart}>
+        <Button
+          color="primary"
+          size="sm"
+          onClick={() =>
+            addToCart({
+              id,
+              image,
+              title,
+              price,
+              description,
+              quantity: 1,
+            })
+          }
+        >
           Add To Cart
         </Button>
         <Button color="danger" size="sm" onClick={() => handleDeleteItem(id)}>

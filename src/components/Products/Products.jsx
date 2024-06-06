@@ -7,7 +7,7 @@ import Spinner from "../UI/Spinner";
 
 import "./Products.css";
 
-function Products(props) {
+function Products() {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +64,6 @@ function Products(props) {
               key={product.id}
               {...product}
               handleDeleteItem={handleDeleteItem}
-              setCartItems={props.setCartItems}
             />
           ))}
         </div>
