@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import AddNewProduct from "./AddNewProduct";
 import Modal from "../UI/Modal";
-import "./Products.css";
 import Button from "../UI/Button";
 import Spinner from "../UI/Spinner";
+
+import "./Products.css";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -24,6 +25,12 @@ function Products() {
       setIsLoading(false);
     }
   }
+
+  useEffect(()=>{
+    fetchProducts();
+  }, []);
+
+
 
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter(
