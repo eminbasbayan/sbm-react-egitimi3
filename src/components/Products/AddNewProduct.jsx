@@ -3,33 +3,22 @@ import Button from "../UI/Button";
 import { useState } from "react";
 
 function AddNewProduct() {
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function handleImageChange(event) {
-    setImage(event.target.value);
-  }
-
-  function handleDescChange(event) {
-    setDescription(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
-
-  console.log({
-    title,
-    image,
-    description,
-    price,
+  const [productData, setProductData] = useState({
+    title: "",
+    image: "",
+    description: "",
+    price: 0,
   });
+
+  function handleChange({ target: { name, value } }) {
+    setProductData({
+      ...productData,
+      // computed properties
+      [name]: value,
+    });
+  }
+
+  console.log(productData);
 
   return (
     <form className="product-form">
@@ -37,7 +26,8 @@ function AddNewProduct() {
         <label>Title</label>
         <input
           type="text"
-          onChange={handleTitleChange}
+          onChange={handleChange}
+          name="title"
           placeholder="Ürün ismi giriniz."
         />
       </div>
@@ -45,7 +35,8 @@ function AddNewProduct() {
         <label>Image</label>
         <input
           type="text"
-          onChange={handleImageChange}
+          onChange={handleChange}
+          name="image"
           placeholder="Ürün görseli giriniz."
         />
       </div>
@@ -53,7 +44,8 @@ function AddNewProduct() {
         <label>Description</label>
         <input
           type="text"
-          onChange={handleDescChange}
+          onChange={handleChange}
+          name="description"
           placeholder="Ürün açıklaması giriniz."
         />
       </div>
@@ -61,7 +53,8 @@ function AddNewProduct() {
         <label>Price</label>
         <input
           type="number"
-          onChange={handlePriceChange}
+          onChange={handleChange}
+          name="price"
           placeholder="Ürün fiyatı giriniz."
         />
       </div>
