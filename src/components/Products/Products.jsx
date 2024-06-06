@@ -19,6 +19,13 @@ function Products() {
     }
   }
 
+  function handleDeleteItem(productId) {
+    const filteredProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(filteredProducts);
+  }
+
   return (
     <div className="products-wrapper">
       <AddNewProduct
@@ -40,10 +47,8 @@ function Products() {
         {products.map((product) => (
           <ProductItem
             key={product.id}
-            image={product.image}
-            title={product.title}
-            price={product.price}
-            description={product.description}
+            {...product}
+            handleDeleteItem={handleDeleteItem}
           />
         ))}
       </div>

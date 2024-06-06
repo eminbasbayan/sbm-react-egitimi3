@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import "./ProductItem.css";
@@ -9,12 +8,7 @@ import "./ProductItem.css";
 */
 
 function ProductItem(props) {
-  const [titleState, setTitleState] = useState("Title");
-  const { image, title, price, description } = props;
-
-  function handleTitleChange() {
-    setTitleState(title);
-  }
+  const { id, image, title, price, description, handleDeleteItem } = props;
 
   return (
     <div className="product-item">
@@ -22,15 +16,15 @@ function ProductItem(props) {
         <img src={image} alt={title} />
       </div>
       <div className="product-info">
-        <strong>{titleState}</strong>
+        <strong>{title}</strong>
         <span>{price}₺</span>
         <span className="product-desc">{description}</span>
         <Button
-          color="primary"
+          color="danger"
           size="sm"
-          onClick={() => handleTitleChange("my data")}
+          onClick={() => handleDeleteItem(id)}
         >
-          Title Change!
+          Delete
         </Button>
       </div>
     </div>
@@ -39,9 +33,11 @@ function ProductItem(props) {
 
 ProductItem.propTypes = {
   image: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string,
+  handleDeleteItem: PropTypes.func,
 };
 
 export default ProductItem;
