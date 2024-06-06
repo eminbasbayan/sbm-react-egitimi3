@@ -18,10 +18,13 @@ function AddNewProduct() {
     });
   }
 
-  console.log(productData);
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("run!");
+  }
 
   return (
-    <form className="product-form">
+    <form className="product-form" onSubmit={handleSubmit}>
       <div className="product-input">
         <label>Title</label>
         <input
