@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
 function Modal(props) {
@@ -5,7 +6,7 @@ function Modal(props) {
     props.setIsShowModal(false);
   }
 
-  return (
+  return createPortal(
     <div className="modal d-inline-block">
       <div
         className="modal-overlay"
@@ -45,7 +46,8 @@ function Modal(props) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modals")
   );
 }
 
