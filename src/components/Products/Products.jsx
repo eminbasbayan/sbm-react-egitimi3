@@ -12,7 +12,6 @@ function Products() {
       <AddNewProduct
         productsData={productsData}
         setProducts={setProducts}
-        products={products}
       />
       <h2>Products</h2>
       <div className="products">

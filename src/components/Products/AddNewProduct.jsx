@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import "./AddNewProduct.css";
 
 function AddNewProduct(props) {
-  const { setProducts, products } = props;
+  const { setProducts } = props;
   const [productData, setProductData] = useState({
     title: "",
     image: "",
@@ -22,7 +22,9 @@ function AddNewProduct(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setProducts([productData, ...products]);
+    // setProducts([productData, ...products]);
+    // previous state
+    setProducts((products) => [productData, ...products]);
   }
 
   return (
