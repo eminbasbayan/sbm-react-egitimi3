@@ -4,18 +4,24 @@ import AddNewProduct from "./AddNewProduct";
 import Modal from "../UI/Modal";
 import "./Products.css";
 import Button from "../UI/Button";
+import Spinner from "../UI/Spinner";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchProducts() {
+    setIsLoading(true);
+    setProducts([]);
     try {
       const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
       setProducts(data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -40,17 +46,20 @@ function Products() {
         />
       )}
       <h2>Products</h2>
-      <Button onClick={fetchProducts} size="sm" color="primary">
-        Fetch Data
-      </Button>
-      <div className="products">
-        {products.map((product) => (
-          <ProductItem
-            key={product.id}
-            {...product}
-            handleDeleteItem={handleDeleteItem}
-          />
-        ))}
+      <div className="d-inline-flex flex-column align-items-start gap-4">
+        <Button onClick={fetchProducts} size="sm" color="primary">
+          Fetch Data
+        </Button>
+        {isLoading && <Spinner />}
+        <div className="products">
+          {products.map((product) => (
+            <ProductItem
+              key={product.id}
+              {...product}
+              handleDeleteItem={handleDeleteItem}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
