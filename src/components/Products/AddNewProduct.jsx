@@ -22,9 +22,12 @@ function AddNewProduct(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // setProducts([productData, ...products]);
-    // previous state
-    setProducts((products) => [productData, ...products]);
+    const newProduct = {
+      id: Math.random(),
+      ...productData,
+      price: Number(productData.price),
+    };
+    setProducts((products) => [newProduct, ...products]);
   }
 
   return (
