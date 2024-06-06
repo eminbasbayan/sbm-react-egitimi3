@@ -7,6 +7,17 @@ function Modal(props) {
 
   return (
     <div className="modal d-inline-block">
+      <div
+        className="modal-overlay"
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#0D6EFD",
+          position: "absolute",
+          opacity: ".3",
+        }}
+        onClick={handleCloseModal}
+      ></div>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
