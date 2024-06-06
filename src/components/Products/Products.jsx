@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function Products() {
   const [products, setProducts] = useState(productsData);
-  console.log(products);
   return (
     <div className="products-wrapper">
       <AddNewProduct productsData={productsData} setProducts={setProducts} />

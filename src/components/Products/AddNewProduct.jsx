@@ -37,7 +37,7 @@ function AddNewProduct(props) {
     title: "",
     image: "",
     description: "",
-    price: 0,
+    price: "",
   });
 
   function handleChange({ target: { name, value } }) {
@@ -50,6 +50,16 @@ function AddNewProduct(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const isFormValid = Object.values(productData).every(
+      (value) => value.trim() !== ""
+    );
+
+    if (!isFormValid) {
+      alert("Tüm inputları doldurunuz!");
+      return;
+    }
+    
     const newProduct = {
       id: Math.random(),
       ...productData,
