@@ -31,14 +31,16 @@ const productInputs = [
   },
 ];
 
+const initialState = {
+  title: "",
+  image: "",
+  description: "",
+  price: "",
+};
+
 function AddNewProduct(props) {
   const { setProducts } = props;
-  const [productData, setProductData] = useState({
-    title: "",
-    image: "",
-    description: "",
-    price: "",
-  });
+  const [productData, setProductData] = useState(initialState);
 
   function handleChange({ target: { name, value } }) {
     setProductData({
@@ -59,19 +61,27 @@ function AddNewProduct(props) {
       alert("Tüm inputları doldurunuz!");
       return;
     }
-    
+
     const newProduct = {
       id: Math.random(),
       ...productData,
       price: Number(productData.price),
     };
     setProducts((products) => [newProduct, ...products]);
+
+    // clear form inputs
+    setProductData(initialState);
   }
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
       {productInputs.map((input, index) => (
-        <ProductInput key={index} {...input} onChange={handleChange} />
+        <ProductInput
+          key={index}
+          {...input}
+          onChange={handleChange}
+          value={productData[input.name]}
+        />
       ))}
       <Button size="sm" color="success">
         Yeni Ürün Ekle
