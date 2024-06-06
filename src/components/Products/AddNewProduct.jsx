@@ -2,6 +2,34 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import "./AddNewProduct.css";
+import ProductInput from "./ProductInput";
+
+const productInputs = [
+  {
+    label: "Title",
+    type: "text",
+    name: "title",
+    placeholder: "Ürün ismi giriniz.",
+  },
+  {
+    label: "Image",
+    type: "text",
+    name: "image",
+    placeholder: "Ürün görseli giriniz.",
+  },
+  {
+    label: "Description",
+    type: "text",
+    name: "description",
+    placeholder: "Ürün açıklaması giriniz.",
+  },
+  {
+    label: "Price",
+    type: "number",
+    name: "price",
+    placeholder: "Ürün fiyatı giriniz.",
+  },
+];
 
 function AddNewProduct(props) {
   const { setProducts } = props;
@@ -32,42 +60,9 @@ function AddNewProduct(props) {
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
-      <div className="product-input">
-        <label>Title</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          name="title"
-          placeholder="Ürün ismi giriniz."
-        />
-      </div>
-      <div className="product-input">
-        <label>Image</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          name="image"
-          placeholder="Ürün görseli giriniz."
-        />
-      </div>
-      <div className="product-input">
-        <label>Description</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          name="description"
-          placeholder="Ürün açıklaması giriniz."
-        />
-      </div>
-      <div className="product-input">
-        <label>Price</label>
-        <input
-          type="number"
-          onChange={handleChange}
-          name="price"
-          placeholder="Ürün fiyatı giriniz."
-        />
-      </div>
+      {productInputs.map((input, index) => (
+        <ProductInput key={index} {...input} onChange={handleChange} />
+      ))}
       <Button size="sm" color="success">
         Yeni Ürün Ekle
       </Button>
