@@ -39,7 +39,7 @@ const initialState = {
 };
 
 function AddNewProduct(props) {
-  const { setProducts } = props;
+  const { setProducts, setIsShowModal } = props;
   const [productData, setProductData] = useState(initialState);
 
   function handleChange({ target: { name, value } }) {
@@ -58,7 +58,7 @@ function AddNewProduct(props) {
     );
 
     if (!isFormValid) {
-      alert("Tüm inputları doldurunuz!");
+      setIsShowModal(true)
       return;
     }
 
@@ -93,6 +93,7 @@ function AddNewProduct(props) {
 AddNewProduct.propTypes = {
   productsData: PropTypes.array,
   setProducts: PropTypes.func,
+  setIsShowModal: PropTypes.func,
 };
 
 export default AddNewProduct;

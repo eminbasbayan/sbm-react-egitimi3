@@ -1,14 +1,27 @@
+import { useState } from "react";
 import ProductItem from "./ProductItem";
 import AddNewProduct from "./AddNewProduct";
 import { productsData } from "../../productsData";
+import Modal from "../UI/Modal";
 import "./Products.css";
-import { useState } from "react";
 
 function Products() {
   const [products, setProducts] = useState(productsData);
+  const [isShowModal, setIsShowModal] = useState(false);
+
   return (
     <div className="products-wrapper">
-      <AddNewProduct productsData={productsData} setProducts={setProducts} />
+      <AddNewProduct
+        setProducts={setProducts}
+        setIsShowModal={setIsShowModal}
+      />
+      {isShowModal && (
+        <Modal
+          setIsShowModal={setIsShowModal}
+          title="Form Hatası!"
+          description="Tüm inputlar dolu olmalı."
+        />
+      )}
       <h2>Products</h2>
       <div className="products">
         {products.map((product) => (
