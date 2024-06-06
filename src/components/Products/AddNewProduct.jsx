@@ -1,8 +1,10 @@
-import "./AddNewProduct.css";
-import Button from "../UI/Button";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import Button from "../UI/Button";
+import "./AddNewProduct.css";
 
-function AddNewProduct() {
+function AddNewProduct(props) {
+  const { setProducts, products } = props;
   const [productData, setProductData] = useState({
     title: "",
     image: "",
@@ -20,7 +22,7 @@ function AddNewProduct() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("run!");
+    setProducts([productData, ...products]);
   }
 
   return (
@@ -67,5 +69,10 @@ function AddNewProduct() {
     </form>
   );
 }
+
+AddNewProduct.propTypes = {
+  productsData: PropTypes.array,
+  setProducts: PropTypes.func,
+};
 
 export default AddNewProduct;
