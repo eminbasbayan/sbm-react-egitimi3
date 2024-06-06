@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Header = (props) => {
   return (
-    <header>
+    <header className="position-fixed w-100 top-0 start-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -38,7 +38,7 @@ const Header = (props) => {
                   <i className="bi bi-cart"></i>
 
                   <span className="position-absolute top-4 start-100 translate-middle badge rounded-pill bg-danger">
-                    {0}
+                    {props.cartItems.length}
                     <span className="visually-hidden">unread messages</span>
                   </span>
                 </a>
@@ -51,6 +51,8 @@ const Header = (props) => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  cartItems: PropTypes.array
+};
 
 export default Header;

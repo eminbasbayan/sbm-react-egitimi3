@@ -8,7 +8,27 @@ import "./ProductItem.css";
 */
 
 function ProductItem(props) {
-  const { id, image, title, price, description, handleDeleteItem } = props;
+  const {
+    id,
+    image,
+    title,
+    price,
+    description,
+    handleDeleteItem,
+    setCartItems,
+  } = props;
+
+  function addToCart() {
+    const product = {
+      id,
+      image,
+      title,
+      price,
+      description,
+    };
+
+    setCartItems((cartItems) => [product, ...cartItems]);
+  }
 
   return (
     <div className="product-item">
@@ -19,11 +39,10 @@ function ProductItem(props) {
         <strong>{title}</strong>
         <span>{price}₺</span>
         <span className="product-desc">{description}</span>
-        <Button
-          color="danger"
-          size="sm"
-          onClick={() => handleDeleteItem(id)}
-        >
+        <Button color="primary" size="sm" onClick={addToCart}>
+          Add To Cart
+        </Button>
+        <Button color="danger" size="sm" onClick={() => handleDeleteItem(id)}>
           Delete
         </Button>
       </div>
