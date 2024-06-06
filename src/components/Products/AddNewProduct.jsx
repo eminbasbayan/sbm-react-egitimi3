@@ -2,7 +2,6 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import ProductInput from "./ProductInput";
-import { toast } from "react-toastify";
 
 import "./AddNewProduct.css";
 
@@ -60,10 +59,7 @@ function AddNewProduct(props) {
     );
 
     if (!isFormValid) {
-      // setIsShowModal(true);
-      toast.warn("Tüm inputları doldurunuz!", {
-        autoClose: 1000,
-      });
+      setIsShowModal(true);
       return;
     }
 
