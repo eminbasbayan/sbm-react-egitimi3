@@ -19,20 +19,6 @@ export const mainRoutes = [
       {
         path: "/products",
         element: <ProductsPage />,
-        loader: async () => {
-          try {
-            const res = await fetch("https://fakestoreapi.com/products/");
-            const data = res.json();
-
-            if (res.ok) {
-              return data;
-            } else {
-              throw new Error("Failed to fetch products");
-            }
-          } catch (err) {
-            console.log(err);
-          }
-        },
       },
       {
         path: "/about",
