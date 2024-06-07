@@ -35,7 +35,14 @@ function ProductItem(props) {
         <img src={image} alt={title} />
       </div>
       <div className="product-info">
-        <strong onClick={() => navigate(`/product/${id}`)}>{title}</strong>
+        <strong
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => navigate(`/product/${id}`)}
+        >
+          {title}
+        </strong>
         <span>
           {price}₺ {cart && `x ${quantity}`}{" "}
         </span>

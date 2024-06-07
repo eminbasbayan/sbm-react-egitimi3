@@ -35,17 +35,19 @@ const ProductDetailsPage = () => {
         <div className="col-12">
           <h2>Customer Reviews</h2>
 
-          <div className="card mb-3">
-            <div className="card-body">
-              <h5 className="card-title">{"review.user"}</h5>
-              <p className="card-text">{"review.comment"}</p>
-              <p className="card-text">
-                <small className="text-muted">
-                  Rating: {"review.rating"} / 5
-                </small>
-              </p>
+          {reviews.map((review) => (
+            <div key={review.id} className="card mb-3">
+              <div className="card-body">
+                <h5 className="card-title">{review.user}</h5>
+                <p className="card-text">{review.comment}</p>
+                <p className="card-text">
+                  <small className="text-muted">
+                    Rating: {review.rating} / 5
+                  </small>
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -53,3 +55,18 @@ const ProductDetailsPage = () => {
 };
 
 export default ProductDetailsPage;
+
+const reviews = [
+  {
+    id: 1,
+    user: "John Doe",
+    comment: "Great product, highly recommend!",
+    rating: 5,
+  },
+  {
+    id: 2,
+    user: "Jane Smith",
+    comment: "Good value for the price.",
+    rating: 4,
+  },
+];
