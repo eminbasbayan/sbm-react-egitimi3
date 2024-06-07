@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
@@ -17,34 +18,34 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto fs-5">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/products">
                   Products
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/cart">
                   Cart
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link position-relative" href="#">
+                <Link className="nav-link position-relative" to="/cart">
                   <i className="bi bi-cart"></i>
 
                   <span className="position-absolute top-4 start-100 translate-middle badge rounded-pill bg-danger">
                     {cartItems.length}
                     <span className="visually-hidden">unread messages</span>
                   </span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

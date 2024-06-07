@@ -1,7 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import Header from "./components/Layout/Header";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
@@ -28,10 +27,9 @@ function App() {
       element: <CartPage />,
     },
   ]);
+
   return (
     <div className="app container">
-      <Header />
-
       <RouterProvider router={router} />
 
       <ToastContainer />
