@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const LoginPage = () => {
   const formik = useFormik({
@@ -6,6 +7,14 @@ const LoginPage = () => {
       email: "",
       password: "",
     },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .required("Zorunlu alan!")
+        .email("Geçerli bir e-mail giriniz!"),
+      password: Yup.string()
+        .required("Zorunlu alan!")
+        .min(6, "Şifre en az 6 karakter olmalı!"),
+    }),
     onSubmit: (values) => {
       console.log(values);
     },
@@ -19,7 +28,7 @@ const LoginPage = () => {
           style={{ maxWidth: "400px", width: "100%" }}
         >
           <h2 className="text-center mb-4">Giriş Yap</h2>
-          <form onSubmit={formik.handleSubmit} >
+          <form onSubmit={formik.handleSubmit}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email adresi
@@ -30,8 +39,11 @@ const LoginPage = () => {
                 name="email"
                 placeholder="Emailinizi girin"
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
-              <span className="text-danger">Email input zorunlu!</span>
+              {formik.touched.email && formik.errors.email && (
+                <span className="text-danger">{formik.errors.email}</span>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
@@ -43,8 +55,11 @@ const LoginPage = () => {
                 name="password"
                 placeholder="Şifrenizi girin"
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
-              <span className="text-danger">Password input zorunlu!</span>
+              {formik.touched.password && formik.errors.password && (
+                <span className="text-danger">{formik.errors.password}</span>
+              )}
             </div>
             <div className="d-grid">
               <button type="submit" className="btn btn-primary btn-block">
