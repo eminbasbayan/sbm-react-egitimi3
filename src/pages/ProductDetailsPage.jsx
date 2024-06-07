@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import Skeleton from "../components/UI/Skeleton";
 
 const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
@@ -14,6 +15,10 @@ const ProductDetailsPage = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [params.productId]);
+
+  if (!product) {
+    return <Skeleton />;
+  }
 
   return (
     <div className="product-details-page">
