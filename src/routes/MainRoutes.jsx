@@ -3,6 +3,7 @@ import AboutPage from "../pages/AboutPage";
 import CartPage from "../pages/CartPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProductsPage from "../pages/ProductsPage";
 
@@ -31,6 +32,10 @@ export const mainRoutes = [
       {
         path: "/product/:productId",
         element: <ProductDetailsPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },
