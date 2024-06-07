@@ -1,17 +1,31 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
-import "./ProductItem.css";
-import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
-/* 
-1- state değişirse component güncellenir.
-2- props değişirse component re-render olur.
-*/
+import "./ProductItem.css";
 
 function ProductItem(props) {
-  const { id, image, title, price, description, handleDeleteItem } = props;
-  const { addToCart } = useContext(CartContext);
+  const {
+    id,
+    image,
+    title,
+    price,
+    description,
+    quantity,
+    handleDeleteItem,
+    cart,
+  } = props;
+  const { addToCart, deleteFromCart } = useContext(CartContext);
+
+  const product = {
+    id,
+    image,
+    title,
+    price,
+    description,
+    quantity: 1,
+  };
 
   return (
     <div className="product-item">
@@ -20,25 +34,21 @@ function ProductItem(props) {
       </div>
       <div className="product-info">
         <strong>{title}</strong>
-        <span>{price}₺</span>
+        <span>
+          {price}₺ {cart && `x ${quantity}`}{" "}
+        </span>
         <span className="product-desc">{description}</span>
+        {!cart && (
+          <Button color="primary" size="sm" onClick={() => addToCart(product)}>
+            Add To Cart
+          </Button>
+        )}
+
         <Button
-          color="primary"
+          color="danger"
           size="sm"
-          onClick={() =>
-            addToCart({
-              id,
-              image,
-              title,
-              price,
-              description,
-              quantity: 1,
-            })
-          }
+          onClick={() => (cart ? deleteFromCart(id) : handleDeleteItem(id))}
         >
-          Add To Cart
-        </Button>
-        <Button color="danger" size="sm" onClick={() => handleDeleteItem(id)}>
           Delete
         </Button>
       </div>
@@ -53,6 +63,8 @@ ProductItem.propTypes = {
   price: PropTypes.number.isRequired,
   description: PropTypes.string,
   handleDeleteItem: PropTypes.func,
+  cart: PropTypes.bool,
+  quantity: PropTypes.number,
 };
 
 export default ProductItem;

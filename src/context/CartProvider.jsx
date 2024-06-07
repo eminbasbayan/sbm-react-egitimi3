@@ -5,7 +5,6 @@ import { useState } from "react";
 const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
-
   function addToCart(product) {
     const findCartItem = cartItems.find((item) => item.id === product.id);
     if (findCartItem) {
@@ -25,6 +24,11 @@ const CartProvider = (props) => {
     setCartItems([product, ...cartItems]);
   }
 
+  function deleteFromCart(cartId) {
+    const filteredCartItems = cartItems.filter((item) => item.id !== cartId);
+    setCartItems(filteredCartItems);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -32,6 +36,7 @@ const CartProvider = (props) => {
         surname: "Başbayan",
         cartItems,
         addToCart,
+        deleteFromCart,
       }}
     >
       {props.children}
