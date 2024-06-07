@@ -1,10 +1,6 @@
-import Footer from "../components/Layout/Footer";
-import Header from "../components/Layout/Header";
-
 const CartPage = () => {
   return (
     <div className="cart-page">
-      <Header />
       <h1>Cart Page</h1>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus illo
@@ -83,7 +79,6 @@ const CartPage = () => {
         nihil numquam harum, molestias temporibus praesentium! Voluptatum vel
         voluptatibus quo quidem quisquam!
       </p>
-      <Footer />
     </div>
   );
 };

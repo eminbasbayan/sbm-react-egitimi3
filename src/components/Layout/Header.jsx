@@ -6,7 +6,7 @@ const Header = () => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <header className="position-fixed w-100 top-0 start-0">
+    <header className="position-sticky top-0 start-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">

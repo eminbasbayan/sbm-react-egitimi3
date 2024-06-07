@@ -7,24 +7,31 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 
 import "react-toastify/dist/ReactToastify.css";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage />,
-    },
-    {
-      path: "/products",
-      element: <ProductsPage />,
-    },
-    {
-      path: "/about",
-      element: <AboutPage />,
-    },
-    {
-      path: "/cart",
-      element: <CartPage />,
+      element: <MainLayout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
+        {
+          path: "/products",
+          element: <ProductsPage />,
+        },
+        {
+          path: "/about",
+          element: <AboutPage />,
+        },
+        {
+          path: "/cart",
+          element: <CartPage />,
+        },
+      ],
     },
   ]);
 

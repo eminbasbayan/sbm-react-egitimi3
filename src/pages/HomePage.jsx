@@ -1,10 +1,6 @@
-import Footer from "../components/Layout/Footer";
-import Header from "../components/Layout/Header";
-
 const HomePage = () => {
   return (
     <div className="home-page">
-      <Header />
       <h1>Home Page</h1>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus illo
@@ -83,7 +79,6 @@ const HomePage = () => {
         nihil numquam harum, molestias temporibus praesentium! Voluptatum vel
         voluptatibus quo quidem quisquam!
       </p>
-      <Footer />
     </div>
   );
 };
