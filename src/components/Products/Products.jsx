@@ -1,36 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductItem from "./ProductItem";
 import AddNewProduct from "./AddNewProduct";
 import Modal from "../UI/Modal";
-import Button from "../UI/Button";
 import Spinner from "../UI/Spinner";
+import useFethData from "../../hooks/FetchData";
 
 import "./Products.css";
 
 function Products() {
-  const [products, setProducts] = useState([]);
+  const {
+    data: products,
+    isLoading,
+    error,
+    setData: setProducts,
+  } = useFethData("https://fakestoreapi.com/products/");
+
   const [isShowModal, setIsShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  async function fetchProducts() {
-    setIsLoading(true);
-    setProducts([]);
-    try {
-      const res = await fetch("https://fakestoreapi.com/products");
-      const data = await res.json();
-      setProducts(data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(()=>{
-    fetchProducts();
-  }, []);
-
-
 
   function handleDeleteItem(productId) {
     const filteredProducts = products.filter(
@@ -54,10 +39,8 @@ function Products() {
       )}
       <h2>Products</h2>
       <div className="d-inline-flex flex-column align-items-start gap-4">
-        <Button onClick={fetchProducts} size="sm" color="primary">
-          Fetch Data
-        </Button>
         {isLoading && <Spinner />}
+        {error && <strong>Error loading data!</strong>}
         <div className="products">
           {products.map((product) => (
             <ProductItem
