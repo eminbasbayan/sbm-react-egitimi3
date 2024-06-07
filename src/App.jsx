@@ -10,6 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 import MainLayout from "./layouts/MainLayout";
 import ErrorPage from "./pages/ErrorPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminPage from "./pages/Admin/AdminPage";
+import AdminUsersPage from "./pages/Admin/UsersPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,6 +54,20 @@ function App() {
         {
           path: "/product/:productId",
           element: <ProductDetailsPage />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          index: true,
+          element: <AdminPage />,
+        },
+        {
+          path: "users",
+          element: <AdminUsersPage />,
         },
       ],
     },
