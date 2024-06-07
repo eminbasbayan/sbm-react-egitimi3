@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import { CartContext } from "../../context/CartContext";
 
 import "./ProductItem.css";
+import { useNavigate } from "react-router-dom";
 
 function ProductItem(props) {
   const {
@@ -17,6 +18,7 @@ function ProductItem(props) {
     cart,
   } = props;
   const { addToCart, deleteFromCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const product = {
     id,
@@ -33,7 +35,7 @@ function ProductItem(props) {
         <img src={image} alt={title} />
       </div>
       <div className="product-info">
-        <strong>{title}</strong>
+        <strong onClick={() => navigate(`/product/${id}`)}>{title}</strong>
         <span>
           {price}₺ {cart && `x ${quantity}`}{" "}
         </span>
