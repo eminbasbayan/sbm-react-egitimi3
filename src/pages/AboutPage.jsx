@@ -1,3 +1,4 @@
+import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 
 const AboutPage = () => {
@@ -82,6 +83,7 @@ const AboutPage = () => {
         nihil numquam harum, molestias temporibus praesentium! Voluptatum vel
         voluptatibus quo quidem quisquam!
       </p>
+      <Footer />
     </div>
   );
 };
