@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    count: 20,
+    count: 0,
   },
   reducers: {
     arttir: (state) => {

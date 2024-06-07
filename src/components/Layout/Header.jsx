@@ -1,10 +1,8 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
-  return;
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <header className="position-sticky top-0 start-0">

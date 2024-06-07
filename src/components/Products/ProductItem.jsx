@@ -1,10 +1,10 @@
-import { useContext } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
-import { CartContext } from "../../context/CartContext";
 
 import "./ProductItem.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../redux/cartSlice";
 
 function ProductItem(props) {
   const {
@@ -17,9 +17,8 @@ function ProductItem(props) {
     handleDeleteItem,
     cart,
   } = props;
-  const { addToCart, deleteFromCart } = useContext(CartContext);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const product = {
     id,
     image,
@@ -28,6 +27,7 @@ function ProductItem(props) {
     description,
     quantity: 1,
   };
+  const dispatch = useDispatch();
 
   return (
     <div className="product-item">
@@ -48,7 +48,11 @@ function ProductItem(props) {
         </span>
         <span className="product-desc">{description}</span>
         {!cart && (
-          <Button color="primary" size="sm" onClick={() => addToCart(product)}>
+          <Button
+            color="primary"
+            size="sm"
+            onClick={() => dispatch(addToCart(product))}
+          >
             Add To Cart
           </Button>
         )}
@@ -56,7 +60,9 @@ function ProductItem(props) {
         <Button
           color="danger"
           size="sm"
-          onClick={() => (cart ? deleteFromCart(id) : handleDeleteItem(id))}
+          onClick={() =>
+            cart ? dispatch(removeFromCart(id)) : handleDeleteItem(id)
+          }
         >
           Delete
         </Button>
