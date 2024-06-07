@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
   const params = useParams();
+  const { addToCart, cartItems } = useContext(CartContext);
+
+  const findCartItem = cartItems.find((item) => item.id === product?.id);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.productId}`)
@@ -26,7 +30,11 @@ const ProductDetailsPage = () => {
           <h1>{product?.title}</h1>
           <p className="lead">{product?.description}</p>
           <h3 className="text-primary">${product?.price}</h3>
-          <button className="btn btn-success btn-lg mt-3" onClick={() => {}}>
+          <button
+            className="btn btn-success btn-lg mt-3"
+            onClick={() => addToCart({ ...product, quantity: 1 })}
+            disabled={findCartItem}
+          >
             Add to Cart
           </button>
         </div>
