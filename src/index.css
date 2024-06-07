@@ -1,3 +1,11 @@
-.app{
-    padding-top: 70px;
+.app {
+  padding-top: 70px;
+}
+
+.active {
+  color: #0d6efd !important;
+}
+
+.red{
+    color: red !important;
 }
