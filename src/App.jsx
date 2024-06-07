@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import "react-toastify/dist/ReactToastify.css";
 import MainLayout from "./layouts/MainLayout";
 import ErrorPage from "./pages/ErrorPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ function App() {
         {
           path: "/cart",
           element: <CartPage />,
+        },
+        {
+          path: "/product-details",
+          element: <ProductDetailsPage />,
         },
       ],
     },
